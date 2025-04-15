@@ -7,11 +7,12 @@ import { useState } from 'react';
 export function Home() {
   const [title, setTitle] = useState('');
   const { currentUser } = useCurrentUserStore();
+  const noteStore = useNoteStore();
 
   const createNote = async () => {
     const newNote = await noteRepository.create(currentUser!.id, { title});
+    noteStore.set(newNote);
     setTitle('');
-    console.log(newNote);
   };
   return (
     <Card className="border-0 shadow-none w-1/2 m-auto">
