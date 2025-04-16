@@ -39,17 +39,21 @@ export function NoteList({ layer = 0, parentId }: NoteListProps) {
       >
         ページがありません
       </p>
-      {notes.map((note) => {
-        return (
-          <div key={note.id}>
-            <NoteItem 
-              note={note} 
-              layer={layer}
-              onExpand={(e:React.MouseEvent) => fetchChildren(e, note)}
-              onCreate = {(e) => createChild(e, note.id)} />
-          </div>
-        );
-      })}
+      {notes
+        .filter((note) => note.parent_document == parentId)
+        .map((note) => {
+          return (
+            <div key={note.id}>
+              <NoteItem 
+                note={note} 
+                layer={layer}
+                onExpand={(e:React.MouseEvent) => fetchChildren(e, note)}
+                onCreate = {(e) => createChild(e, note.id)} 
+              />
+              <NoteList layer={layer + 1} parentId={note.id} />
+            </div>
+          );
+        })}
     </>
   );
 }
