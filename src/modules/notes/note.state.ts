@@ -16,9 +16,12 @@ export const useNoteStore = () => {
             return Object.values(uniqueNotes);
         });
     };
+
+    const getOne = (id: number) => notes.find((note) => note.id == id);
     
     return {
         getAll:  () => notes,
+        getOne,
         set,
     };
 };
