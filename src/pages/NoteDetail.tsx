@@ -32,16 +32,17 @@ const NoteDetail = () => {
     return updatedNote;
   };
 
-  if (isLoading) return <div/>
+  if (isLoading) return <div/>;
   if (note == null) return <div>note is not existed</div>;
-  console.log(note);
 
   return (
     <div className="pb-40 pt-20">
       <div className="md:max-w-3xl lg:md-max-w-4xl mx-auto">
         <TitleInput 
           initialData={note}  
-          onTitleChange={(title)=> updateNote(id, { title })}/>
+          onTitleChange={(title)=> updateNote(id, { title })}
+        />
+        <Editor/>
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ function App() {
     setIsLoading(false);
   };
 
-  if (isLoading) return <div />
+  if (isLoading) return <div />;
 
   return (
     <BrowserRouter>
@@ -37,7 +37,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App
