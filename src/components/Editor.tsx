@@ -21,7 +21,7 @@ function Editor({ onChange, initialContent }: EditorProps) {
     <div>
       <BlockNoteView
         editor={editor}
-        onChange={() => onChange(JSON.stringify(editor.document, null, 2))}
+        onChange={() => onChange(JSON.stringify(editor.document))}
       />
     </div>
   );
