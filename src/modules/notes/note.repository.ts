@@ -1,5 +1,4 @@
 import { supabase } from "@/lib/supabase";
-import { error } from "console";
 
 export const noteRepository = {
     async create(userId: string, params: { title?: string; parentId?: number }) {
