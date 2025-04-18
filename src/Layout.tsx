@@ -10,6 +10,7 @@ const Layout = () => {
   const { currentUser } = useCurrentUserStore();
   const noteStore = useNoteStore();
   const [isLoading, setIsLoading] = useState(false);
+  const [isShowModal, setIsShowModal] = useState(false);
 
   useEffect(() => {
     fetchNotes();
@@ -27,15 +28,15 @@ const Layout = () => {
 
   return (
     <div className="h-full flex">
-      {!isLoading && <SideBar onSearchButtonClicked={() => {}} />}
+      {!isLoading && <SideBar onSearchButtonClicked={() => setIsShowModal(true)} />}
       <main className="flex-1 h-full overflow-y-auto">
         <Outlet />
         <SearchModal
-          isOpen={false}
+          isOpen={isShowModal}
           notes={[]}
           onItemSelect={() => {}}
           onKeywordChanged={() => {}}
-          onClose={() => {}}
+          onClose={() => setIsShowModal(false)}
         />
       </main>
     </div>
