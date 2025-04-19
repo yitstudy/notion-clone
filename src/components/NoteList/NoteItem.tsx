@@ -85,7 +85,7 @@ export function NoteItem({
         icon={getIcon()}
         onIconClick={onExpand}
         trailingItem={menu}
-        isActive={isHovered}
+        isActive={isHovered || isSelected}
       />
     </div>
   );
